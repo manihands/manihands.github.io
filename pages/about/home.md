@@ -2,8 +2,7 @@
 layout: default
 title: about
 permalink: /about/
+header: about yenny
 ---
 
-# About Page
-
-Hello! My name is Yenny.
+ASFeFASFA

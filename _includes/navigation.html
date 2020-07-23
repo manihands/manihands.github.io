@@ -1,37 +1,15 @@
-<!-- <div class="mx-6 pt-6">
-  <ul class="flex justify-center">
+<ul class="flex justify-center mx-6 pt-2">
+  {% for item in site.data.navigation %}
     <li class="mx-6">
-      <a class="font-serif text-2xl text-reddish-6 hover:text-reddish-5" href="/" {% if page.url == "/" %}style="color: red;"{% endif %}> manihands </a>
-    </li>
-    <li class="mx-6 pt-2">
-      <a class="text-reddish-6 hover:text-reddish-5" href="/about/"> about </a>
-    </li>
-    <li class="mx-6 pt-2">
-      <a class="text-reddish-6 hover:text-reddish-5" href="/favorites/"> favorites </a>
-    </li>
-    <li class="mx-6 pt-2">
-      <a class="text-reddish-6 hover:text-reddish-5" href="/projects/"> projects </a>
-    </li>
-    <li class="mx-6 pt-2">
-      <a class="text-reddish-6 hover:text-reddish-5" href="/massage/"> massage </a>
-    </li>
-    <li class="mx-6 pt-2">
-      <a class="text-reddish-6 hover:text-reddish-5" href="/contact/"> contact </a>
-    </li>
-    <li class="mx-6 pt-2">
-      <a class="text-reddish-6 hover:text-reddish-5" href="/about.html"> abouthtml </a>
-    </li>
-  </ul>
-</div>
- -->
-<div class="mx-6 pt-6">
-  <ul class="flex justify-center">
-    {% for item in site.data.navigation %}
-      <li class="mx-6">
-        <a class="font-serif text-2xl text-reddish-6 hover:text-reddish-5" href="{{ item.link }}" {% if page.url == item.link %}style="color: red;"{% endif %}>
+      {% if item.name == 'manihands' %}
+        <a class="font-serif text-xl pr-16 text-reddish-6 hover:text-reddish-5" href="{{ item.link }}" {% if page.url == item.link %}style="color: red;"{% endif %}>
           {{ item.name }}
         </a>
-      </li>
-    {% endfor %}
-  </ul>
-</div>
+      {% else %}
+      <a class="flex justify-end font-sans mt-1 text-reddish-6 hover:text-reddish-5" href="{{ item.link }}" {% if page.url == item.link %}style="color: red;"{% endif %}>
+        {{ item.name }}
+      </a>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>

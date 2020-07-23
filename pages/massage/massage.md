@@ -2,8 +2,7 @@
 layout: default
 title: massage
 permalink: /massage/
+header: manihands massage
 ---
-
-# Manihands Massage
 
 Do you believe in the power of touch?
