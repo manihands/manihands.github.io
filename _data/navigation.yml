@@ -1,0 +1,10 @@
+- name: manihands
+  link: /
+- name: about
+  link: /about/
+- name: favorites
+  link: /favorites/
+- name: massage
+  link: /massage/
+- name: contact
+  link: /contact/

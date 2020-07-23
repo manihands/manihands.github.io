@@ -1,7 +1,7 @@
-<div class="mx-6 pt-6">
+<!-- <div class="mx-6 pt-6">
   <ul class="flex justify-center">
     <li class="mx-6">
-      <a class="font-serif text-2xl text-reddish-6 hover:text-reddish-5" href="/"> manihands </a>
+      <a class="font-serif text-2xl text-reddish-6 hover:text-reddish-5" href="/" {% if page.url == "/" %}style="color: red;"{% endif %}> manihands </a>
     </li>
     <li class="mx-6 pt-2">
       <a class="text-reddish-6 hover:text-reddish-5" href="/about/"> about </a>
@@ -18,5 +18,20 @@
     <li class="mx-6 pt-2">
       <a class="text-reddish-6 hover:text-reddish-5" href="/contact/"> contact </a>
     </li>
+    <li class="mx-6 pt-2">
+      <a class="text-reddish-6 hover:text-reddish-5" href="/about.html"> abouthtml </a>
+    </li>
+  </ul>
+</div>
+ -->
+<div class="mx-6 pt-6">
+  <ul class="flex justify-center">
+    {% for item in site.data.navigation %}
+      <li class="mx-6">
+        <a class="font-serif text-2xl text-reddish-6 hover:text-reddish-5" href="{{ item.link }}" {% if page.url == item.link %}style="color: red;"{% endif %}>
+          {{ item.name }}
+        </a>
+      </li>
+    {% endfor %}
   </ul>
 </div>

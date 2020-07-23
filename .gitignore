@@ -8,7 +8,12 @@ instance/
 .pytest_cache/
 .coverage
 htmlcov/
-assets/output.css
 dist/
 build/
 *.egg-info/
+.DS_Store
+
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
