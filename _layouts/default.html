@@ -8,14 +8,11 @@
   </head>
 
   <body>
-    <div class="container w-auto items-start p-4">
-    {% include navigation.html %}
-
-      <div class="flex w-auto mx-6">
-        <div class="flex flex-col mx-6 pt-2">
-          <div class="flex px-4 text-lg">  {{ page.header }} </div>
-          <div class="container m-4 text-sm"> {{ content }} </div>
-        </div>
+    <div class="container pl-56 pt-4">
+      <div class="flex flex-col">
+        {% include navigation.html %}
+        <div class="flex pt-8 px-12 text-xl">  {{ page.header }} </div>
+        <div class="flex px-12 my-2 text-sm"> {{ content }} </div>
       </div>
     </div>
   </body>

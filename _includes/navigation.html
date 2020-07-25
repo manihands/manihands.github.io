@@ -1,13 +1,13 @@
-<ul class="flex justify-center mx-6 pt-2">
+<ul class="flex mx-6 pt-2">
   {% for item in site.data.navigation %}
     <li class="mx-6">
       {% if item.name == 'manihands' %}
-        <a class="font-serif text-xl pr-16 text-reddish-6 hover:text-reddish-5" href="{{ item.link }}" {% if page.url == item.link %}style="color: red;"{% endif %}>
+        <a class="font-serif text-2xl pr-16 text-reddish-6" href="{{ item.link }}" {% if page.url == item.link %}style="color: red;"{% endif %}>
           {{ item.name }}
         </a>
       {% else %}
-      <a class="flex justify-end font-sans mt-1 text-reddish-6 hover:text-reddish-5" href="{{ item.link }}" {% if page.url == item.link %}style="color: red;"{% endif %}>
-        {{ item.name }}
+      <a class="flex justify-end font-sans mt-2 text-reddish-6 hover:text-reddish-4" href="{{ item.link }}" {% if page.url == item.link %}style="color: #EB9C69;"{% endif %}>
+        {{ item.name | upcase }}
       </a>
       {% endif %}
     </li>
