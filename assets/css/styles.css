@@ -2,3 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.header {
+  @apply flex font-serif text-reddish-4 pt-6 pb-2 px-12 text-xl;
+}
+
+.body {
+  @apply flex text-grayish-5 tracking-wide pl-12 pr-40 my-2 text-sm;
+}
+

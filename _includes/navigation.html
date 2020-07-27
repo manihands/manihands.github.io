@@ -2,7 +2,7 @@
   {% for item in site.data.navigation %}
     <li class="mx-6">
       {% if item.name == 'manihands' %}
-        <a class="font-serif text-2xl pr-16 text-reddish-6" href="{{ item.link }}" {% if page.url == item.link %}style="color: red;"{% endif %}>
+        <a class="font-serif text-2xl pr-16 text-reddish-8" href="{{ item.link }}">
           {{ item.name }}
         </a>
       {% else %}

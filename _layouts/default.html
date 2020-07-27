@@ -1,19 +1,5 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>{{ page.title }}</title>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Gotu&family=Montserrat&family=Lato&family=Yatra+One&display=swap" rel="stylesheet">
-    <link href="/assets/css/main.css" type="text/css" rel="stylesheet"/>
-  </head>
-
-  <body>
-    <div class="container pl-56 pt-4">
-      <div class="flex flex-col">
-        {% include navigation.html %}
-        <div class="flex pt-8 px-12 text-xl">  {{ page.header }} </div>
-        <div class="flex px-12 my-2 text-sm"> {{ content }} </div>
-      </div>
-    </div>
-  </body>
-</html>
+---
+layout: main
+---
+<div class="header">  {{ page.header }} </div>
+<div class="body"> {{ content }} </div>

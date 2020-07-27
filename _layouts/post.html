@@ -1,7 +1,6 @@
 ---
-layout: default
+layout: main
 ---
-<h1>{{ page.title }}</h1>
-<p>{{ page.date | date_to_string }} - {{ page.author }}</p>
-
-{{ content }}
+<div class="header">  <h1>{{ page.title }}</h1> </div>
+<div class="flex font-serif text-reddish-11 pl-12"><p>{{ page.date | date_to_string }} - {{ page.author }}</p></div>
+<div class="body"> {{ content }} </div>

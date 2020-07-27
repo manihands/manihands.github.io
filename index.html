@@ -3,4 +3,20 @@ layout: default
 title: manihands
 ---
 
-<h2 class="text-left text-sm text-reddish-8 text-sm"> sometimes refers to manicured hands. </br> </br> sometimes refers to the alter ego of yenny zhang, a twenty-something year old human who is currently located in southern california purgatory.</h2>
+<div class="container">
+  <div class="flex flex-col">
+
+    <div class="flex flex-row pb-6">
+      <h2 class="text-left text-sm text-reddish-14 text-sm"> sometimes refers to manicured hands. </br> </br> sometimes refers to the alter ego of yny, a twenty-something year old human who is currently wading in southern California purgatory.</h2>
+    </div>
+
+
+    {% for item in site.data.colors %}
+      <div class="flex flex-row text-2xl text-{{ item.name }}">
+        <h1 class="px-4"> watsup </h1>
+        <h1 class="px-4 font-serif"> {{ item.name }} </h1>
+      </div>
+    {% endfor %}
+
+  </div>
+</div>

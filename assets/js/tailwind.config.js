@@ -37,8 +37,14 @@ module.exports = {
       },
       tealish: {
         1: '#B5E5E9', // frost blue
-        2: '#B1C6DE', // powder blue
-
+        2: '#B1C6DE' // powder blue
+      },
+      grayish: {
+        1: '#b5bbc7',
+        2: '#8a92a2',
+        3: '#b8b3a4',
+        4: '#908a7d',
+        5: '#5D5C58'
       }
     },
     spacing: {

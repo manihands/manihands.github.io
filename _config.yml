@@ -1,7 +1,7 @@
 # Where things are
 source              : .
 destination         : ./_site
-collections_dir     : .
+collections_dir     : collections
 plugins_dir         : _plugins
 layouts_dir         : _layouts
 data_dir            : _data
@@ -11,6 +11,7 @@ sass:
 collections:
   posts:
     output          : true
+
 
 # Handling Reading
 safe                : false
