@@ -1,0 +1,17 @@
+---
+layout: post
+title: "Favorite Albums"
+author: yenny
+last_updated: 2020-10-03
+category: favorites
+---
+
+
+<div class="grid grid-cols-4">
+  {% for album in site.data.albums %}
+    <div>
+        <img src="{{ album.album_cover_image_url }}">
+    </div>
+  {% endfor %}
+
+</div>

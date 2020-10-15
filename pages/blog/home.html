@@ -5,11 +5,24 @@ permalink: /blog/
 header: blog
 ---
 
+<table class="table w-11/12">
+    <thead>
+        <tr>
+            <th class="text-left pb-2 w-1/4">created</th>
+            <th class="text-left pb-2 w-1/4">last_updated</th>
+            <th class="text-left pb-2 w-3/5">title</th>
+            <th class="text-left pb-2 w-1/5">tags</th>
+        </tr>
+    </thead>
 
-<ul>
-  {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-    </li>
-  {% endfor %}
-</ul>
+    <tbody>
+      {% for post in site.posts %}
+      <tr>
+        <td class="text-reddish-3 text-base">{{ post.date | date: "%Y-%m-%d" }}</p></td>
+        <td class="text-reddish-7 text-base">{{ post.last_updated | date: "%Y-%m-%d" }}</td>
+        <td class="text-base text-reddish-7 hover:text-reddish-4"> <a href="{{ post.url }}">{{ post.title }}</a></td>
+        <td class="text-reddish-3 text-base">{{ post.category }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+</table>

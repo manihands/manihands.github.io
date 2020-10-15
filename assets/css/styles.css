@@ -4,10 +4,21 @@
 
 
 .header {
-  @apply flex font-serif text-reddish-4 pt-6 pb-2 px-12 text-xl;
+  @apply flex font-serif text-reddish-4 py-3 text-3xl;
 }
 
 .body {
-  @apply flex text-grayish-5 tracking-wide pl-12 pr-40 my-2 text-sm;
+  @apply flex text-grayish-5 tracking-wide text-base text-sm;
 }
 
+.td {
+  @apply text-left;
+}
+
+.th {
+  @apply text-left;
+}
+
+.icon {
+  @apply h-6 w-6;
+}

@@ -1,0 +1,14 @@
+---
+layout: post
+title: "Theme Colors"
+author: yenny
+last_updated: 2020-10-03
+category: favorites
+---
+
+<div class="grid grid-cols-2">
+{% for item in site.data.colors %}
+    <h1 class="px-4 text-xl text-{{ item.name }}"> manihands </h1>
+    <h1 class="px-4 font-serif text-xl text-{{ item.name }}"> {{ item.name }} </h1>
+{% endfor %}
+</div>

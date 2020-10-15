@@ -1,15 +1,29 @@
-<ul class="flex mx-6 pt-2">
-  {% for item in site.data.navigation %}
-    <li class="mx-6">
-      {% if item.name == 'manihands' %}
-        <a class="font-serif text-2xl pr-16 text-reddish-8" href="{{ item.link }}">
-          {{ item.name }}
-        </a>
-      {% else %}
-      <a class="flex justify-end font-sans mt-2 text-reddish-6 hover:text-reddish-4" href="{{ item.link }}" {% if page.url == item.link %}style="color: #EB9C69;"{% endif %}>
-        {{ item.name | upcase }}
-      </a>
-      {% endif %}
-    </li>
-  {% endfor %}
-</ul>
+<div class="flex">
+  <div class="flex w-5/6">
+    <ul class="flex mx-6 pt-2">
+      {% for item in site.data.navigation %}
+        <li class="mx-6">
+          {% if item.name == 'manihands' %}
+            <a class="font-serif text-2xl pr-16 text-reddish-8" href="{{ item.link }}">
+              {{ item.name }}
+            </a>
+          {% else %}
+          <a class="flex justify-end font-sans mt-2 text-reddish-6 hover:text-reddish-4" href="{{ item.link }}" {% if page.url == item.link %}style="color: #EB9C69;"{% endif %}>
+            {{ item.name | upcase }}
+          </a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="flex w-1/6">
+    <ul class="flex pt-2">
+      {% for social in site.data.socials %}
+          {% if social.live == true %}
+              <a href="{{ social.profile_url }}" target="_blank"><img class="icon" src="{{ social.image_url }}"></a>
+          {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>

@@ -1,6 +1,14 @@
 ---
 layout: main
 ---
-<div class="header">  <h1>{{ page.title }}</h1> </div>
-<div class="flex font-serif text-reddish-11 pl-12"><p>{{ page.date | date_to_string }} - {{ page.author }}</p></div>
-<div class="body"> {{ content }} </div>
+<div class="header">
+  {{ page.title }}
+</div>
+
+<div class="font-serif text-reddish-11 font-italic">
+  {{ page.date | date: "%A %B %d, %Y"  }}
+</div>
+
+<div class="my-8 body">
+  {{ content }}
+</div>

@@ -10539,11 +10539,9 @@ video {
   --text-opacity: 1;
   color: #EB9C69;
   color: rgba(235, 156, 105, var(--text-opacity));
-  padding-top: 1.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 3rem;
-  padding-right: 3rem;
-  font-size: 1.25rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-size: 1.875rem;
 }
 
 .body {
@@ -10552,11 +10550,21 @@ video {
   color: #5D5C58;
   color: rgba(93, 92, 88, var(--text-opacity));
   letter-spacing: 0.025em;
-  padding-left: 3rem;
-  padding-right: 10rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  font-size: 1rem;
   font-size: 0.875rem;
+}
+
+.td {
+  text-align: left;
+}
+
+.th {
+  text-align: left;
+}
+
+.icon {
+  height: 1.5rem;
+  width: 1.5rem;
 }
 
 @media (min-width: 640px) {
@@ -50338,4 +50346,3 @@ video {
     transition-delay: 1000ms;
   }
 }
-
