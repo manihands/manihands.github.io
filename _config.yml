@@ -11,6 +11,10 @@ sass:
 collections:
   posts:
     output          : true
+  projects:
+    output          : true
+    permalink.      : /:collection/:name
+
 
 
 # Handling Reading
