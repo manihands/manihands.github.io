@@ -16,10 +16,84 @@ category: learning
   <div>
     <form class="flex text-sm items-center">
       <label class="block">
-        <input name="heartRate" type="range" min="1" max="100" value="47" step="1">
-        &#128151; rate<output name="output"></output>
+        <input id="heartRateInput" name="heartRate" type="range" min="1" max="250" step="1" value="247">
+        my &#128151; rate is: 
+        <output id="heartRateOutput" name="output" for="heartRate">247</output>
       </label>
     </form>
   </div>
 
+  <div id="radial-graph" class="py-4">
+    <svg viewBox="-500 -500 1000 1000">
+      <path id="radialGraphPath"
+            stroke="black"
+            fill="red"
+            class="flex flex-col py-4"> 
+      </path>
+
+      <path id="linePath"
+            stroke="blue"
+            fill="none"
+            class="flex flex-col py-4">
+      </path>
+     </svg>
+  </div>
+
 </div>
+
+<script>
+
+// initialize vals
+let step = 0;
+let path = "M0,247"
+updateHeartRate();
+
+// updates the displayed heart rate based off of the range input form for my heart rate.
+function updateHeartRate() {
+  d3.select("#heartRateInput").on("input", function() {
+    var newHeartRate = +this.value;
+    step += 1;
+
+    path = line(newHeartRate, step, path);
+    // update the outputted value
+    document.getElementById("heartRateOutput").value = newHeartRate;
+
+    // update the radius of the circle
+    d3.select("#radialGraphPath")
+      .attr("d", arc(newHeartRate));
+
+    // update the plot
+    d3.select("#linePath")
+      .attr("d", path);
+  });
+}
+
+// to do - have the value of the heart rate be input to radius
+// then have the circle explode at a certain point lol
+
+d3.select("#radialGraphPath")
+  .attr("d", arc(247));
+
+
+d3.select("#linePath")
+  .attr("d", path);
+
+
+function arc(radius) {
+  return d3.arc()
+    .innerRadius(radius)
+    .outerRadius(radius + 100)
+    .startAngle(0)
+    .endAngle(360);
+}
+
+function line(val, step, prevPath) {
+  return prevPath + `L${step},${val}`;
+}
+
+var svg = d3.select("svg")
+  .append("g")
+  .attr("transform", "translate(150, 50)")
+
+
+</script>
