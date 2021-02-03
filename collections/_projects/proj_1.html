@@ -5,15 +5,12 @@ name: drag
 category: learning
 ---
 
-<div class="flex flex-col">
+<div class="flex w-10/12 flex-col flex-grow">
   <div>
-    <!-- pls consider making the following header into a class -->
     <h2 class="font-serif text-xl text-reddish-2 py-2">
       im anxious, adjust my heart rate
     </h2>
-  </div>
 
-  <div>
     <form class="flex text-sm items-center">
       <label class="block">
         <input id="heartRateInput" name="heartRate" type="range" min="1" max="250" step="1" value="247">
@@ -23,21 +20,24 @@ category: learning
     </form>
   </div>
 
-  <div id="radial-graph" class="py-4">
-    <svg viewBox="-500 -500 1000 1000">
-      <path id="radialGraphPath"
-            stroke="black"
-            fill="red"
-            class="flex flex-col py-4"> 
-      </path>
+    <div id="radial-graph" class="h-4">
+      <svg viewBox="-50 -50 200 200">
+        <path id="radialGraphPath"
+              fill="red"> 
+        </path>
+       </svg>
+    </div>
 
-      <path id="linePath"
-            stroke="blue"
-            fill="none"
-            class="flex flex-col py-4">
-      </path>
-     </svg>
-  </div>
+    <div id="line-graph">
+      <svg id="line-graph-svg" viewBox="0 0 1000 1000">
+        <path id="linePath"
+              stroke="blue"
+              stroke-width="2"
+              fill="none">
+        </path>
+       </svg>
+    </div>
+  <!-- </div> -->
 
 </div>
 
@@ -52,7 +52,7 @@ updateHeartRate();
 function updateHeartRate() {
   d3.select("#heartRateInput").on("input", function() {
     var newHeartRate = +this.value;
-    step += 1;
+    step += 2;
 
     path = line(newHeartRate, step, path);
     // update the outputted value
@@ -60,7 +60,7 @@ function updateHeartRate() {
 
     // update the radius of the circle
     d3.select("#radialGraphPath")
-      .attr("d", arc(newHeartRate));
+      .attr("d", arc(newHeartRate / 10));
 
     // update the plot
     d3.select("#linePath")
@@ -72,17 +72,27 @@ function updateHeartRate() {
 // then have the circle explode at a certain point lol
 
 d3.select("#radialGraphPath")
-  .attr("d", arc(247));
+  .attr("d", arc(24));
 
+var x = d3.scaleLinear()
+  .domain([0, 250])
+  .range([0, 800])
+
+
+d3.select("#line-graph-svg")
+  .append("g")
+  .attr("transform", "translate(0, 250)")
+  .call(d3.axisBottom(x));
 
 d3.select("#linePath")
   .attr("d", path);
 
 
 function arc(radius) {
+  // var scaled = radius / 10;
   return d3.arc()
     .innerRadius(radius)
-    .outerRadius(radius + 100)
+    .outerRadius(radius + 5)
     .startAngle(0)
     .endAngle(360);
 }
