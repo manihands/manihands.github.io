@@ -29,23 +29,25 @@ category: learning
     </div>
 
     <div id="line-graph">
-      <svg id="line-graph-svg" viewBox="0 0 1000 1000">
+      <svg id="line-graph-svg" viewBox="-10 -10 1000 1000">
         <path id="linePath"
               stroke="blue"
               stroke-width="2"
+              stroke-miterlimit="1"
               fill="none">
         </path>
        </svg>
     </div>
-  <!-- </div> -->
 
 </div>
 
 <script>
 
 // initialize vals
-let step = 0;
-let path = "M0,247"
+let step = 30;
+let initHeartRate = +document.getElementById("heartRateOutput").value;
+let data = [{"step": step, "val": initHeartRate}];
+
 updateHeartRate();
 
 // updates the displayed heart rate based off of the range input form for my heart rate.
@@ -53,57 +55,52 @@ function updateHeartRate() {
   d3.select("#heartRateInput").on("input", function() {
     var newHeartRate = +this.value;
     step += 2;
-
-    path = line(newHeartRate, step, path);
+    data.push({"step": step, "val": newHeartRate});
     // update the outputted value
     document.getElementById("heartRateOutput").value = newHeartRate;
 
     // update the radius of the circle
     d3.select("#radialGraphPath")
-      .attr("d", arc(newHeartRate / 10));
+      .attr("d", arcGen(newHeartRate / 10));
 
     // update the plot
     d3.select("#linePath")
-      .attr("d", path);
+      .attr("d", lineGen(data));
   });
 }
 
-// to do - have the value of the heart rate be input to radius
-// then have the circle explode at a certain point lol
 
-d3.select("#radialGraphPath")
-  .attr("d", arc(24));
+let xScale = d3.scaleLinear()
+  .domain([0, 1000])
+  .range([0, 1000])
 
-var x = d3.scaleLinear()
-  .domain([0, 250])
-  .range([0, 800])
+let xAxisGenerator = d3.axisBottom(xScale).ticks(20)
 
-
-d3.select("#line-graph-svg")
+let xAxis = d3.select("#line-graph-svg")
   .append("g")
-  .attr("transform", "translate(0, 250)")
-  .call(d3.axisBottom(x));
+  .call(xAxisGenerator)
+  .attr("transform", "translate(30, 400)")
 
-d3.select("#linePath")
-  .attr("d", path);
+let yScale = d3.scaleLinear()
+  .domain([0, 250])
+  .range([400, 0])
 
+let yAxisGenerator = d3.axisLeft(yScale)
+  .ticks(5)
 
-function arc(radius) {
-  // var scaled = radius / 10;
-  return d3.arc()
-    .innerRadius(radius)
-    .outerRadius(radius + 5)
+let yAxis = d3.select("#line-graph-svg")
+  .append("g")
+  .call(yAxisGenerator)
+  .attr("transform", "translate(30, 0)")
+  
+let lineGen = d3.line()
+  .x(d => xScale(d['step']))
+  .y(d => yScale(d['val']));
+
+let arcGen = d3.arc()
+    .innerRadius(r => r)
+    .outerRadius(r => r + 5)
     .startAngle(0)
     .endAngle(360);
-}
-
-function line(val, step, prevPath) {
-  return prevPath + `L${step},${val}`;
-}
-
-var svg = d3.select("svg")
-  .append("g")
-  .attr("transform", "translate(150, 50)")
-
 
 </script>
