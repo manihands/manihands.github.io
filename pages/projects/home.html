@@ -4,11 +4,12 @@ title: projects
 permalink: /projects/
 header: projects
 ---
-{% for proj in site.projects %}
-  <h2>
-    <a href="{{ proj.url }}">
-     &#129409; {{ proj.title }} &#10024;    
-
-    </a>
-  </h2>
-{% endfor %}
+<div class="flex flex-col">
+  {% for proj in site.projects %}
+    <h2>
+      <a href="{{ proj.url }}">
+       &#129409; {{ proj.title }} &#10024;    
+      </a>
+    </h2>
+  {% endfor %}
+</div>
