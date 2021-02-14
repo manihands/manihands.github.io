@@ -1,0 +1,95 @@
+---
+layout: proj
+title: "ANIMATION"
+name: animation
+category: learning
+---
+
+
+<div class="absolute flex flex-col w-1/2 py-4">
+    <div id="nav" class="flex">
+      <button class="border-2 border-opacity-5 px-4 py-2 rounded-md w-1/6">
+          Replay
+      </button>
+
+      <div class="px-4">
+        <select id="countySelector"></select>
+      </div>
+    </div>
+
+    <svg id="covid-graph" viewBox="-50 -10 1000 800">
+<!--       <path id="cumCases"
+      stroke="blue"
+      stroke-width="2"
+      stroke-miterlimit="1"
+      fill="none">
+      </path>
+ -->
+      <path id="dailyCases"
+      stroke="red"
+      stroke-width="1"
+      stroke-miterlimit="1"
+      fill="none">
+      </path>
+
+    </svg>
+</div>
+
+<script>
+
+d3.csv("/assets/data/cases_by_county_2021-02-12.csv", d3.autoType).then(function(data) {
+  var counties = new Set(data.map(d => d['county']).filter(d => d != "Statewide Unallocated"))
+  
+  d3.select("#countySelector")
+    .selectAll('option')
+    .data(counties)
+    .enter()
+      .append("option")
+      .attr("value", function(d) {
+        return d;
+      })
+      .text(function(d) {
+        return d;
+      })
+
+
+  render(data, "Alameda County")
+
+  d3.select("#countySelector")
+    .on("change", function() {
+      updateGraph(data, document.getElementById("countySelector").value)
+    })
+})
+
+function updateGraph(allData, county) {
+  let data = allData.filter(d => d['county'] == county)
+  let xScale = d3.scaleUtc()
+    .domain(d3.extent(data, d => Date.parse(d.date)))
+    .range([margin.left, width - margin.right])
+
+  let yScale = d3.scaleLinear()
+    .domain([0, d3.max(data, d => +d['cases'])])
+    .range([height - margin.bottom, margin.top])
+
+  let xAxisGenerator = d3.axisBottom(xScale)
+
+  let yAxisGenerator = d3.axisLeft(yScale).ticks(5)
+  let xAxis = d3.select("#covid-graph")
+    .append("g")
+    .call(xAxisGenerator)
+    // the 740 = height = 800- 20 - 20
+    .attr("transform", "translate(0,740)")
+
+  let yAxis = d3.select("#covid-graph")
+    .append("g")
+    .call(yAxisGenerator)
+    .attr("transform", "translate(10,0)")
+
+  let dailyCasesGenerator = d3.line()
+    .x(d => xScale(Date.parse(d.date)))
+    .y(d => yScale(+d['cases']));
+
+  d3.select("#dailyCases")
+    .attr("d", dailyCasesGenerator(data));
+}
+</script>
